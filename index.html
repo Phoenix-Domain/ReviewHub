@@ -6,8 +6,45 @@
     <title>ReviewHub</title>
   </head>
   <body>
-    <header></header>
-    <main></main>
+    <header class="w-full mb-5">
+      <h1 class="font-bold text-5xl mx-auto">ReviewHub</h1>
+    </header>
+    <main class="mt-5">
+      <form action="">
+        <label for="name" class="block my-2">
+          Name:
+          <input type="text" id="name" placeholder="Your full name" class="border-1 border-gray-600 p-1">
+        </label>
+
+        <div class="block my-2">
+          <label for="review" class="my-2">Your Review:
+          
+          </label>
+          <textarea name="review" id="review" class="border-1 border-gray-600 p-1"></textarea>
+        </div>
+
+        <fieldset class="border-1 border-gray-600 p-1 inline-block">
+          <legend class="font-bold">Rating</legend>
+
+          <label for="terrible" class="mx-3">Terrible
+            <input title="Rating" type="radio" name="Rating" id="terrible">
+          </label>
+          <label for="poor" class="mx-3">Poor
+            <input title="Rating" type="radio" name="Rating" id="poor">
+          </label>
+          <label for="good" class="mx-3">Good
+            <input title="Rating" type="radio" name="Rating" id="good">
+          </label>
+          <label for="veryGood" class="mx-3">Very Good
+            <input title="Rating" type="radio" name="Rating" id="veryGood">
+          </label>
+          <label for="excellent" class="mx-3">Excellent
+            <input title="Rating" type="radio" name="Rating" id="excellent">
+          </label>
+        </fieldset>
+        
+      </form>
+    </main>
     <footer></footer>
     <script type="module" src="/src/main.js"></script>
   </body>
