@@ -9,4 +9,5 @@ const goodRating = document.querySelector('#good');
 const veryGoodRating = document.querySelector('#veryGood');
 const excellentRating = document.querySelector('#excellent');
 const testimonials = document.querySelector('#testimonials')
+const submitBtn = document.querySelector('#submitBtn');
 
