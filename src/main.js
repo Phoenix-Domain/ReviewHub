@@ -57,7 +57,7 @@ function createCard(x){
   clientRating.textContent = `Rating: ${x.rating}`;
 
   clientCard.append(clientReview,clientName,clientRating);
-  clientCard.classList.add('bg-purple-300', 'my-3', 'p-4')
+  clientCard.classList.add('bg-purple-300','w-fit', 'my-3', 'p-4','m-auto','rounded-lg','shadow-lg');
 
   testimonials.append(clientCard);
 }
