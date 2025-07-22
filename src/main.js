@@ -34,28 +34,30 @@ submitBtn.addEventListener('click', e => {
       return ratingVal = 4;
     } else if(rating.id === "excellent" && rating.checked){
       return ratingVal = 5;
-    } else{
-      ratingVal = 0;
     }
   })
 
   let client = new MakeClient(nameVal,reviewVal,ratingVal);
   
-  
   createCard(client);
 })
 
 function createCard(x){
-  const clientReview = document.createElement('cite');
+  const clientReview = document.createElement('q');
   const clientName = document.createElement('p');
   const clientRating = document.createElement('p');
   const clientCard = document.createElement('article');
 
   clientReview.textContent = x.review;
-  clientName.textContent = x.name;
+  clientReview.classList.add('text-left','my-2','italic');
+
+  clientName.textContent = ` - ${x.name}`;
+  clientName.classList.add('text-right','mb-2','font-bold');
+
   clientRating.textContent = `Rating: ${x.rating}`;
 
   clientCard.append(clientReview,clientName,clientRating);
+  clientCard.classList.add('bg-purple-300', 'my-3', 'p-4')
 
   testimonials.append(clientCard);
 }
