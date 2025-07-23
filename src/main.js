@@ -40,30 +40,43 @@ submitBtn.addEventListener('click', e => {
   let client = new MakeClient(nameVal,reviewVal,ratingVal);
 
   clientArray.push(client);
-  
+
   createCard(client);
 
   name.value ="";
   review.value = "";
   ratings.forEach(rating => rating.checked = false);
-})
+});
+
+
+
 
 function createCard(x){
   const clientReview = document.createElement('q');
   const clientName = document.createElement('p');
   const clientRating = document.createElement('p');
+  const delRating = document.createElement('button');
   const clientCard = document.createElement('article');
 
   clientReview.textContent = x.review;
   clientReview.classList.add('text-left','my-2','italic');
+
+  delRating.textContent = 'Delete';
+  delRating.classList.add('bg-blue-800', 'text-white', 'px-5', 'py-2', 'rounded-full', 'hover:bg-purple-800', 'block', 'mt-5');
+  delRating.addEventListener('click', () => {
+    delCard(clientCard);
+  })
 
   clientName.textContent = ` - ${x.name}`;
   clientName.classList.add('text-right','mb-2','font-bold');
 
   clientRating.textContent = `Rating: ${x.rating}`;
 
-  clientCard.append(clientReview,clientName,clientRating);
+  clientCard.append(clientReview,clientName,clientRating, delRating);
   clientCard.classList.add('bg-purple-300','w-fit', 'my-3', 'p-4','m-auto','rounded-lg','shadow-lg');
 
   testimonials.append(clientCard);
 }
+
+
+
