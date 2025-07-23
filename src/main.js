@@ -116,7 +116,7 @@ function createCard(x){
   }
 
   clientCard.append(clientReview,clientName,clientRating, delRating);
-  clientCard.classList.add('bg-purple-300','w-fit', 'my-3', 'p-4','m-auto','rounded-lg','shadow-lg');
+  clientCard.classList.add('bg-purple-300','w-full', 'my-3', 'p-4','m-auto','rounded-lg','shadow-lg','max-w-sm');
 
   testimonials.append(clientCard);
 }
