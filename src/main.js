@@ -32,36 +32,21 @@ submitBtn.addEventListener('click', e => {
   e.preventDefault();
   const nameVal = name.value.trim();
   const reviewVal = review.value.trim();
-  let ratingVal;
+  const ratingVal = checkRating(ratings);
   
-  ratings.forEach(rating => {
-    if(rating.id === "terrible" && rating.checked){
-      return ratingVal = 1;
-    } else if(rating.id === "poor" && rating.checked){
-      return ratingVal = 2;
-    } else if(rating.id === "good" && rating.checked){
-      return ratingVal = 3;
-    } else if(rating.id === "veryGood" && rating.checked){
-      return ratingVal = 4;
-    } else if(rating.id === "excellent" && rating.checked){
-      return ratingVal = 5;
-    }
-  })
 
   let client = new MakeClient(nameVal,reviewVal,ratingVal,currentImageData);
 
-  clientArray.push(client);
-  saveClient(clientArray);
+  if(nameVal && reviewVal && ratingVal){
+    clientArray.push(client);
+    saveClient(clientArray);
 
-  createCard(client);
+    createCard(client);
+  }else{
+    alert('Please fill in all fields');
+  }
 
-  name.value ="";
-  review.value = "";
-  image.value = "";
-  currentImageData = null;
-  imgDisplay.classList.add('hidden');
-  displayBox.classList.add('hidden');
-  ratings.forEach(rating => rating.checked = false);
+  resetVal();
 });
 
 image.addEventListener('change', e => {
@@ -145,4 +130,28 @@ function saveClient(x){
 
 function getClient(){
   return JSON.parse(localStorage.getItem('Client'))
+}
+
+function checkRating(x){
+  let value = null;
+  x.forEach(rating => {
+    if(rating.checked){
+      if(rating.id === 'terrible') value = 1;
+      if(rating.id === 'poor') value = 2;
+      if(rating.id === 'good') value = 3;
+      if(rating.id === 'veryGood') value = 4;
+      if(rating.id === 'excellent') value = 5;
+    };
+  });
+  return value;
+}
+
+function resetVal(){
+  name.value ="";
+  review.value = "";
+  image.value = "";
+  currentImageData = null;
+  imgDisplay.classList.add('hidden');
+  displayBox.classList.add('hidden');
+  ratings.forEach(rating => rating.checked = false);
 }
