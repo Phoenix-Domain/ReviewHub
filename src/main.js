@@ -104,7 +104,7 @@ function createCard(x){
   clientName.textContent = ` - ${x.name}`;
   clientName.classList.add('text-right','mb-2','font-bold');
 
-  clientRating.textContent = `Rating: ${x.rating}`;
+  checkStars(x,clientRating);
 
   if(x.image){
     const clientImage = document.createElement('img');
@@ -154,4 +154,18 @@ function resetVal(){
   imgDisplay.classList.add('hidden');
   displayBox.classList.add('hidden');
   ratings.forEach(rating => rating.checked = false);
+}
+
+function checkStars(x,y){
+  if(x.rating === 1){
+    y.textContent = `⭐ ☆ ☆ ☆ ☆`;
+  } else if(x.rating === 2){
+    y.textContent = `⭐ ⭐ ☆ ☆ ☆ `;
+  } else if(x.rating === 3){
+    y.textContent = `⭐ ⭐ ⭐ ☆ ☆`;
+  } else if(x.rating === 4){
+    y.textContent = `⭐ ⭐ ⭐ ⭐ ☆`;
+  } else if(x.rating === 5){
+    y.textContent = `⭐ ⭐ ⭐ ⭐ ⭐`;
+  }
 }
