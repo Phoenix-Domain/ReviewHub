@@ -18,7 +18,10 @@ const imgDisplay = document.querySelector('#imgDisplay');
 const ratings = document.querySelectorAll('.ratings');
 const testimonials = document.querySelector('#testimonials');
 const submitBtn = document.querySelector('#submitBtn');
-const imgStatusMsg = document.querySelector('#imgStatusMsg')
+const imgStatusMsg = document.querySelector('#imgStatusMsg');
+const toggleBtn = document.querySelector('#toggleBtn');
+const colorModeSym = document.querySelector('#colorModeSym');
+const body = document.body;
 
 let currentImageData = null;
 
@@ -79,6 +82,15 @@ image.addEventListener('change', e => {
   } else{
     alert('Please upload a valid image file')
     currentImageData = null;
+  }
+});
+
+toggleBtn.addEventListener('click', () => {
+  body.classList.toggle('dark');
+  if(body.classList.contains('dark')){
+    colorModeSym.textContent = '🌙';
+  } else if(!body.classList.contains('dark')){
+    colorModeSym.textContent = '☀️';
   }
 })
 
