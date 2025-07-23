@@ -15,7 +15,7 @@ const image = document.querySelector('#image');
 const ratings = document.querySelectorAll('.ratings');
 const testimonials = document.querySelector('#testimonials');
 const submitBtn = document.querySelector('#submitBtn');
-
+const clientArray = [];
 
 submitBtn.addEventListener('click', e => {
   e.preventDefault();
@@ -38,8 +38,14 @@ submitBtn.addEventListener('click', e => {
   })
 
   let client = new MakeClient(nameVal,reviewVal,ratingVal);
+
+  clientArray.push(client);
   
   createCard(client);
+
+  name.value ="";
+  review.value = "";
+  ratings.forEach(rating => rating.checked = false);
 })
 
 function createCard(x){
