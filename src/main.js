@@ -83,3 +83,11 @@ function createCard(x){
 function deleteItem(item){
   item.remove();
 }
+
+function saveClient(x){
+  localStorage.setItem('Client', JSON.stringify(x));
+};
+
+function getClient(){
+  return JSON.parse(localStorage.getItem('Client'))
+}
