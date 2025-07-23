@@ -15,7 +15,13 @@ const image = document.querySelector('#image');
 const ratings = document.querySelectorAll('.ratings');
 const testimonials = document.querySelector('#testimonials');
 const submitBtn = document.querySelector('#submitBtn');
-let clientArray = [];
+
+
+let clientArray = getClient() || [];
+
+clientArray.forEach(card => createCard(card));
+
+
 
 submitBtn.addEventListener('click', e => {
   e.preventDefault();
@@ -40,6 +46,7 @@ submitBtn.addEventListener('click', e => {
   let client = new MakeClient(nameVal,reviewVal,ratingVal);
 
   clientArray.push(client);
+  saveClient(clientArray);
 
   createCard(client);
 
@@ -66,6 +73,7 @@ function createCard(x){
   delRating.addEventListener('click', () => {
     deleteItem(clientCard);
     clientArray = clientArray.filter(card => card!==x);
+    saveClient(clientArray);
   })
 
   clientName.textContent = ` - ${x.name}`;
@@ -77,7 +85,6 @@ function createCard(x){
   clientCard.classList.add('bg-purple-300','w-fit', 'my-3', 'p-4','m-auto','rounded-lg','shadow-lg');
 
   testimonials.append(clientCard);
-  console.log(clientArray)
 }
 
 function deleteItem(item){
