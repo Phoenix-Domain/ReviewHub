@@ -52,7 +52,7 @@ submitBtn.addEventListener('click', e => {
 image.addEventListener('change', e => {
   const file = e.target.files[0]; //Get the selected file
 
-  if(file){
+  if(file && file.type.startsWith('image/')){
     //Create a fileReader
     const reader = new FileReader();
 
@@ -77,6 +77,7 @@ image.addEventListener('change', e => {
     }
     reader.readAsDataURL(file);
   } else{
+    alert('Please upload a valid image file')
     currentImageData = null;
   }
 })
