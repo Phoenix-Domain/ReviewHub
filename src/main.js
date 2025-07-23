@@ -17,6 +17,7 @@ const imgDisplay = document.querySelector('#imgDisplay');
 const ratings = document.querySelectorAll('.ratings');
 const testimonials = document.querySelector('#testimonials');
 const submitBtn = document.querySelector('#submitBtn');
+const imgStatusMsg = document.querySelector('#imgStatusMsg')
 
 
 let clientArray = getClient() || [];
@@ -57,6 +58,32 @@ submitBtn.addEventListener('click', e => {
   ratings.forEach(rating => rating.checked = false);
 });
 
+image.addEventListener('change', e => {
+  const file = e.target.files[0]; //Get the selected file
+
+  if(file){
+    //Create a fileReader
+    const reader = new FileReader();
+
+    reader.onload = e => {
+      imgDisplay.src = e.target.result;
+      imgDisplay.style.display = 'block';
+      displayBox.classList.remove('hidden'); 
+    }
+
+    reader.onerror = e => {
+      alert(`Error reading file: ${e.target.error}`)
+      imgDisplay.style.display = 'none';
+    }
+
+    reader.onprogress = e => {
+      if(e.lengthComputable){
+        const percent = (e.loaded/e.total) * 100;
+        imgStatusMsg.textContent = `Loading: ${percent.toFixed(2)}`
+      }
+    }
+  }
+})
 
 
 
