@@ -1,10 +1,11 @@
 import './style.css';
 
 class MakeClient{
-  constructor(name,review,rating){
+  constructor(name,review,rating,image = null){
     this.name = name;
     this.review = review;
     this.rating = rating;
+    this.image = image;
   }
 }
 
@@ -19,6 +20,7 @@ const testimonials = document.querySelector('#testimonials');
 const submitBtn = document.querySelector('#submitBtn');
 const imgStatusMsg = document.querySelector('#imgStatusMsg')
 
+let currentImageData = null;
 
 let clientArray = getClient() || [];
 
@@ -46,7 +48,7 @@ submitBtn.addEventListener('click', e => {
     }
   })
 
-  let client = new MakeClient(nameVal,reviewVal,ratingVal);
+  let client = new MakeClient(nameVal,reviewVal,ratingVal,currentImageData);
 
   clientArray.push(client);
   saveClient(clientArray);
@@ -55,6 +57,10 @@ submitBtn.addEventListener('click', e => {
 
   name.value ="";
   review.value = "";
+  image.value = "";
+  currentImageData = null;
+  imgDisplay.classList.add('hidden');
+  displayBox.classList.add('hidden');
   ratings.forEach(rating => rating.checked = false);
 });
 
@@ -66,22 +72,27 @@ image.addEventListener('change', e => {
     const reader = new FileReader();
 
     reader.onload = e => {
+      currentImageData = e.target.result;
       imgDisplay.src = e.target.result;
-      imgDisplay.style.display = 'block';
+      imgDisplay.classList.add('block', 'w-50','h-50','rounded-full');
       displayBox.classList.remove('hidden'); 
     }
 
     reader.onerror = e => {
       alert(`Error reading file: ${e.target.error}`)
       imgDisplay.style.display = 'none';
+      currentImageData = null;
     }
 
     reader.onprogress = e => {
       if(e.lengthComputable){
         const percent = (e.loaded/e.total) * 100;
-        imgStatusMsg.textContent = `Loading: ${percent.toFixed(2)}`
+        imgStatusMsg.textContent = `Loading: ${percent.toFixed(2)}%`
       }
     }
+    reader.readAsDataURL(file);
+  } else{
+    currentImageData = null;
   }
 })
 
@@ -109,6 +120,14 @@ function createCard(x){
   clientName.classList.add('text-right','mb-2','font-bold');
 
   clientRating.textContent = `Rating: ${x.rating}`;
+
+  if(x.image){
+    const clientImage = document.createElement('img');
+    clientImage.src = x.image;
+    clientImage.alt = `${x.name}'s image`;
+    clientImage.classList.add('w-16', 'h-16', 'rounded-full', 'mx-auto', 'mb-2', 'object-cover');
+    clientCard.append(clientImage);
+  }
 
   clientCard.append(clientReview,clientName,clientRating, delRating);
   clientCard.classList.add('bg-purple-300','w-fit', 'my-3', 'p-4','m-auto','rounded-lg','shadow-lg');
