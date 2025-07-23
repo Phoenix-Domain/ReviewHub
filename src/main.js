@@ -12,6 +12,8 @@ class MakeClient{
 const name = document.querySelector('#name');
 const review = document.querySelector('#review');
 const image = document.querySelector('#image');
+const displayBox = document.querySelector('#displayBox');
+const imgDisplay = document.querySelector('#imgDisplay');
 const ratings = document.querySelectorAll('.ratings');
 const testimonials = document.querySelector('#testimonials');
 const submitBtn = document.querySelector('#submitBtn');
