@@ -28,7 +28,9 @@ let currentImageData = null;
 let clientArray = getClient() || [];
 
 if(clientArray.length <= 0){
+  const client1 = new MakeClient('Batubo Victory',"ReviewHub has completely changed how I track feedback! It's so intuitive and easy to use. Highly recommend!",5,);
 
+  createCard(client1);
 }else{
   clientArray.forEach(card => createCard(card));
 }
