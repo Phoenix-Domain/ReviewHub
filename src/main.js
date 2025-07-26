@@ -27,7 +27,12 @@ let currentImageData = null;
 
 let clientArray = getClient() || [];
 
-clientArray.forEach(card => createCard(card));
+if(clientArray.length <= 0){
+
+}else{
+  clientArray.forEach(card => createCard(card));
+}
+
 
 
 
