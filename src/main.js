@@ -30,9 +30,9 @@ let clientArray = getClient() || [];
 if(clientArray.length <= 0){
   const client1 = new MakeClient('Batubo Victory',"ReviewHub has completely changed how I track feedback! It's so intuitive and easy to use. Highly recommend!",5,'https://placehold.co/150x150?text=BV&font=roboto');
 
-  const client2 = new MakeClient('John Doe',"This platform has made it so easy to gather and manage reviews. I love the user-friendly interface!",4,'https://placehold.co/150x150?text=JD&font=roboto');
+  const client2 = new MakeClient('John Doe',"This platform has made it so easy to gather and manage reviews. I love the user-friendly interface!",3,'https://placehold.co/150x150?text=JD&font=roboto');
 
-  const client3 = new MakeClient('Jane Smith',"I appreciate the simplicity and effectiveness of ReviewHub. It's a game changer for my business!",5,'https://placehold.co/150x150?text=JS&font=roboto');
+  const client3 = new MakeClient('Jane Smith',"I appreciate the simplicity and effectiveness of ReviewHub. It's a game changer for my business!",4,'https://placehold.co/150x150?text=JS&font=roboto');
 
   const client4 = new MakeClient('Alice Johnson',"ReviewHub has streamlined my feedback process. It's quick, efficient, and reliable!",4,'https://placehold.co/150x150?text=AJ&font=roboto');
 
