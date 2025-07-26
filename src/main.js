@@ -28,9 +28,18 @@ let currentImageData = null;
 let clientArray = getClient() || [];
 
 if(clientArray.length <= 0){
-  const client1 = new MakeClient('Batubo Victory',"ReviewHub has completely changed how I track feedback! It's so intuitive and easy to use. Highly recommend!",5,);
+  const client1 = new MakeClient('Batubo Victory',"ReviewHub has completely changed how I track feedback! It's so intuitive and easy to use. Highly recommend!",5,'https://via.placeholder.com/150');
+
+  const client2 = new MakeClient('John Doe',"This platform has made it so easy to gather and manage reviews. I love the user-friendly interface!",4,'https://via.placeholder.com/150');
+
+  const client3 = new MakeClient('Jane Smith',"I appreciate the simplicity and effectiveness of ReviewHub. It's a game changer for my business!",5,'https://via.placeholder.com/150');
+
+  const client4 = new MakeClient('Alice Johnson',"ReviewHub has streamlined my feedback process. It's quick, efficient, and reliable!",4,'https://via.placeholder.com/150');
 
   createCard(client1);
+  createCard(client2);
+  createCard(client3);
+  createCard(client4);
 }else{
   clientArray.forEach(card => createCard(card));
 }
